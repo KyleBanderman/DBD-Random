@@ -36,9 +36,9 @@ public class Fetcher {
     public static HashMap<String, String> fetchKillerAddons (String killerName) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         HashMap<String, String> output = new HashMap<>();
-        ArrayList<HashMap<String, String>> allKillersAndAddons = mapper.readValue(new URL("file:src/main/resources/static/killers/killerAddons.json"), ArrayList.class);
-        for (HashMap<String, String> item : allKillersAndAddons) {
-            if (item.containsValue(killerName)) {
+        ArrayList<HashMap<String, String>> allKillersAddons = mapper.readValue(new URL("file:src/main/resources/static/killers/killerAddons.json"), ArrayList.class);
+        for (HashMap<String, String> item : allKillersAddons) {
+            if (item.get("killer").equals(killerName)) {
                 output = item;
             }
         }
